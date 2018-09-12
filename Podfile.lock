@@ -1,0 +1,23 @@
+PODS:
+  - Alamofire (4.7.3)
+  - Renderer (1.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - Renderer (from `../Renderer`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+
+EXTERNAL SOURCES:
+  Renderer:
+    :path: "../Renderer"
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Renderer: d601b7ba8ce2bef5f8733a7285d56570e1092f96
+
+PODFILE CHECKSUM: 851a85bee01be2370bfbd4d43812cf0443709c5e
+
+COCOAPODS: 1.6.0.beta.1
