@@ -30,8 +30,7 @@ public class VotingManager: ATPManager {
         print(decodedResp["success"] as! Bool)
         if decodedResp["success"] as! Bool {
           self.nasAddress = nasAddress
-          let data = decodedResp["data"] as! [String: Any]
-          let contractAddress = data["contract"] as! String
+          let contractAddress = self.getContractAddress(data: decodedResp["data"])
           debugPrint("contract address", contractAddress)
           self.contractAddress = contractAddress
           try! LibraryAPI.sharedInstance.getTIE(nasAddress, contractAddress, campaignID, completion: { rs in
@@ -63,6 +62,13 @@ public class VotingManager: ATPManager {
     })
   }
 
+  private func getContractAddress(data: Any?) -> String {
+    if data == nil {
+      return Constants.defaultContractAddress
+    }
+    return ((data! as! [String: Any])["contract"] as! String)
+  }
+
   public func getTIE() -> TIE? {
     return tie
   }
@@ -73,7 +79,9 @@ public class VotingManager: ATPManager {
     debugPrint("data decoded string", dataDecodedString)
     if let firstLayerJson = try? JSONSerialization.jsonObject(with: dataDecodedString.data(using: .utf8)!) as! NSArray {
       debugPrint("firstLayerJson", firstLayerJson)
-      let objs = firstLayerJson.filter{($0 as! [String: Any])["language"] as! String == "en"}
+      let objs = firstLayerJson.filter {
+        ($0 as! [String: Any])["language"] as! String == "en"
+      }
       if objs.count == 0 {
         return nil
       }
@@ -109,13 +117,13 @@ public class VotingManager: ATPManager {
 }
 
 extension String {
-  subscript (bounds: CountableClosedRange<Int>) -> String {
+  subscript(bounds: CountableClosedRange<Int>) -> String {
     let start = index(startIndex, offsetBy: bounds.lowerBound)
     let end = index(startIndex, offsetBy: bounds.upperBound)
     return String(self[start...end])
   }
 
-  subscript (bounds: CountableRange<Int>) -> String {
+  subscript(bounds: CountableRange<Int>) -> String {
     let start = index(startIndex, offsetBy: bounds.lowerBound)
     let end = index(startIndex, offsetBy: bounds.upperBound)
     return String(self[start..<end])

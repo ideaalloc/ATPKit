@@ -14,6 +14,8 @@
 		3EA449BF213832C200CE2BB9 /* ATPKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA449B5213832C200CE2BB9 /* ATPKit.framework */; };
 		3EA449C4213832C200CE2BB9 /* ATPKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA449C3213832C200CE2BB9 /* ATPKitTests.swift */; };
 		3EA449C6213832C200CE2BB9 /* ATPKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA449B8213832C200CE2BB9 /* ATPKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3EA768F52149099400FB5F00 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA768F42149099400FB5F00 /* Constants.swift */; };
+		3EA768F62149099400FB5F00 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA768F42149099400FB5F00 /* Constants.swift */; };
 		3EC2D822213EAC8200C4857D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC2D808213EAC5100C4857D /* Alamofire.framework */; };
 		3EC2D86C213EB35700C4857D /* Renderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC2D82C213EAD1A00C4857D /* Renderer.framework */; };
 		3EFF2FD321397BA1001CD174 /* VotingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF2FD221397BA1001CD174 /* VotingManager.swift */; };
@@ -152,6 +154,7 @@
 		3EA449BE213832C200CE2BB9 /* ATPKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ATPKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA449C3213832C200CE2BB9 /* ATPKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATPKitTests.swift; sourceTree = "<group>"; };
 		3EA449C5213832C200CE2BB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EA768F42149099400FB5F00 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3EC2D7FC213EAC5100C4857D /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		3EC2D823213EAD1A00C4857D /* Renderer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Renderer.xcodeproj; path = ../Renderer/Renderer.xcodeproj; sourceTree = "<group>"; };
 		3EC2D858213EB2F100C4857D /* Renderer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Renderer.xcodeproj; path = ../Renderer/Renderer.xcodeproj; sourceTree = "<group>"; };
@@ -277,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF8C258E1B439EC200BBA0A /* Connectivity.swift */,
+				3EA768F42149099400FB5F00 /* Constants.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -489,7 +493,6 @@
 				F72243AECBE2F0C3EC8036D3 /* Pods-ATPKitTests.debug.xcconfig */,
 				73BE65A2608ABD00C73E49C7 /* Pods-ATPKitTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -724,15 +727,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ATPKit-checkManifestLockResult.txt",
 			);
@@ -746,15 +745,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ATPKitTests-checkManifestLockResult.txt",
 			);
@@ -778,6 +773,7 @@
 				BEF8C80B4299B922D794EFE2 /* LibraryAPI.swift in Sources */,
 				BEF8C61FC4512DE4418F2B34 /* Connectivity.swift in Sources */,
 				3EFF2FD321397BA1001CD174 /* VotingManager.swift in Sources */,
+				3EA768F52149099400FB5F00 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,6 +786,7 @@
 				3EFF2FE021398EF2001CD174 /* KitFactory.swift in Sources */,
 				3E6F71D221392F00007DD408 /* ATPManager.swift in Sources */,
 				BEF8CDFDA148ED36130EDFC5 /* HTTPClient.swift in Sources */,
+				3EA768F62149099400FB5F00 /* Constants.swift in Sources */,
 				3EFF2FDD21398A8D001CD174 /* KitBuilder.swift in Sources */,
 				BEF8C06DAFD773E25448B7D9 /* LibraryAPI.swift in Sources */,
 				BEF8CCAE04AA06910B1EA784 /* Connectivity.swift in Sources */,
