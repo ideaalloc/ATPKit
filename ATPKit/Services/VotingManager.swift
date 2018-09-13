@@ -54,6 +54,10 @@ public class VotingManager: ATPManager {
               }
             }
           })
+        } else {
+          let errorMsg = decodedResp["errorMsg"] as! String
+          self.tie = TIE(type: .error, raw: errorMsg)
+          completion(self.tie)
         }
       } else {
         self.tie = nil
