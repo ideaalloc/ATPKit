@@ -31,6 +31,7 @@
 		BEF8CCAE04AA06910B1EA784 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8C258E1B439EC200BBA0A /* Connectivity.swift */; };
 		BEF8CDFDA148ED36130EDFC5 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8C70B55826706DADC46CE /* HTTPClient.swift */; };
 		D6E65C3E3B4A4574441856B4 /* Pods_ATPKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E58E12859D0F7334D35C3CC /* Pods_ATPKitTests.framework */; };
+		F51D95526CFB7F4F14117F18 /* Pods_ATPKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B121EFD071A653E2DE9E2 /* Pods_ATPKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +227,7 @@
 			files = (
 				3EA2C57A214A62D10020153F /* Pods_Renderer.framework in Frameworks */,
 				3EC2D822213EAC8200C4857D /* Alamofire.framework in Frameworks */,
+				F51D95526CFB7F4F14117F18 /* Pods_ATPKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
