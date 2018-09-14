@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.swift_version    = '4.1.2'
   s.name             = 'ATPKit'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'ATPKit'
 
 # This description is used to generate tags and improve search results.
@@ -39,6 +39,6 @@ ATP Kit is for Atlas Protocol Targeting Interactive Element Development
 
   # s.public_header_files = 'Pods/**/*.h'
   s.dependency 'Alamofire', '~> 4.7'
-  s.dependency 'Renderer', '~> 1.0.2'
+  s.dependency 'Renderer', '~> 1.0.3'
 end
 
