@@ -30,7 +30,8 @@ public class VotingManager: ATPManager {
         print(decodedResp["success"] as! Bool)
         if decodedResp["success"] as! Bool {
           self.nasAddress = nasAddress
-          let contractAddress = self.getContractAddress(data: decodedResp["data"])
+          let data = decodedResp["data"] as! [String: Any]
+          let contractAddress = data["contract"] as! String
           debugPrint("contract address", contractAddress)
           self.contractAddress = contractAddress
           try! LibraryAPI.sharedInstance.getTIE(nasAddress, contractAddress, campaignID, completion: { rs in
@@ -66,13 +67,6 @@ public class VotingManager: ATPManager {
     })
   }
 
-  private func getContractAddress(data: Any?) -> String {
-    if data == nil {
-      return Constants.defaultContractAddress
-    }
-    return ((data! as! [String: Any])["contract"] as! String)
-  }
-
   public func getTIE() -> TIE? {
     return tie
   }
@@ -83,21 +77,58 @@ public class VotingManager: ATPManager {
     debugPrint("data decoded string", dataDecodedString)
     if let firstLayerJson = try? JSONSerialization.jsonObject(with: dataDecodedString.data(using: .utf8)!) as! NSArray {
       debugPrint("firstLayerJson", firstLayerJson)
-      let objs = firstLayerJson.filter {
-        ($0 as! [String: Any])["language"] as! String == "en"
+      let lang = getLang(lang: atpConfig?.lang, defaultLang: "en")
+      var objs = firstLayerJson.filter{($0 as! [String: Any])["language"] as! String == lang}
+      if lang == "en" {
+        if objs.count == 0 {
+          return nil
+        }
+      } else {
+        objs = firstLayerJson.filter{($0 as! [String: Any])["language"] as! String == "en"}
+        if objs.count == 0 {
+          return nil
+        }
       }
-      if objs.count == 0 {
-        return nil
-      }
+
       let secondLayerJson = objs[0] as! [String: Any]
       debugPrint("obj", secondLayerJson)
       let question = secondLayerJson["question"] as! String
       let options = secondLayerJson["options"] as! NSArray
+      let optionsText = secondLayerJson["optionsText"] as! NSArray
+      let message = secondLayerJson["message"] as! String
       debugPrint("question", question)
       debugPrint("options", options)
-      return VoteData(question: question, options: options as! [String])
+      debugPrint("message", message)
+      var opts: Array<String> = Array()
+      for (index, element) in options.enumerated() {
+        let va = valArray(arr: optionsText, index: index)
+        let v = val(value: va, defaultValue: element as! String)
+        opts.append(v)
+      }
+      return VoteData(question: question, options: opts, message: message)
     }
     return nil
+  }
+
+  private func getLang(lang: String?, defaultLang: String) -> String {
+    guard let vlang = lang else {
+      return defaultLang
+    }
+    return vlang
+  }
+
+  private func valArray(arr: NSArray, index: Int) -> String? {
+    if arr.count - 1 < index {
+      return nil
+    }
+    return arr[index] as? String
+  }
+
+  private func val(value: String?, defaultValue: String) -> String {
+    guard let v = value else {
+      return defaultValue
+    }
+    return v
   }
 
   public func dispatch(adForm: ADForm?) -> ATPRenderer? {
@@ -121,13 +152,13 @@ public class VotingManager: ATPManager {
 }
 
 extension String {
-  subscript(bounds: CountableClosedRange<Int>) -> String {
+  subscript (bounds: CountableClosedRange<Int>) -> String {
     let start = index(startIndex, offsetBy: bounds.lowerBound)
     let end = index(startIndex, offsetBy: bounds.upperBound)
     return String(self[start...end])
   }
 
-  subscript(bounds: CountableRange<Int>) -> String {
+  subscript (bounds: CountableRange<Int>) -> String {
     let start = index(startIndex, offsetBy: bounds.lowerBound)
     let end = index(startIndex, offsetBy: bounds.upperBound)
     return String(self[start..<end])

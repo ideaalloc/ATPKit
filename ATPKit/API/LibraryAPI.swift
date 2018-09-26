@@ -35,7 +35,7 @@ public class LibraryAPI: NSObject {
 
   public func getTIE(_ nasAddr: String, _ contractAddr: String, _ campaignID: String
       , completion: @escaping (String?) -> Void) throws {
-    try httpClient.getRequest("/tie?nasAddr=\(nasAddr)&contractAddr=\(contractAddr)&campaignid=\(campaignID)"
+    try httpClient.getRequest("/tie?nasAddr=\(nasAddr)&contractAddr=\(contractAddr)&campaignID=\(campaignID)"
         , completion: completion)
   }
 

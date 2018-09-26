@@ -11,11 +11,11 @@ import Foundation
 public struct ATPConfig: Codable {
   let baseEP: String
   let campaignID: String
-  let partnerID: String
+  let lang: String
 
-  public init(baseEP: String, campaignID: String, partnerID: String) {
+  public init(baseEP: String, campaignID: String, lang: String = "en") {
     self.baseEP = baseEP
     self.campaignID = campaignID
-    self.partnerID = partnerID
+    self.lang = lang
   }
 }
