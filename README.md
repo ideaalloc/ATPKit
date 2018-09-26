@@ -7,11 +7,11 @@ This library is for iOS devices.
 
 #### Installation Guide
 
-You want to add `pod 'ATPKit', '~> 1.0.3'` similar to the following to your Podfile:
+You want to add `pod 'ATPKit', '~> 1.1.0'` similar to the following to your Podfile:
 
 ```
 target 'MyApp' do
-  pod 'ATPKit', '~> 1.0.3'
+  pod 'ATPKit', '~> 1.1.0'
 end
 ```
 
