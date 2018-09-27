@@ -12,10 +12,14 @@ public struct ATPConfig: Codable {
   let baseEP: String
   let campaignID: String
   let lang: String
+  let accid: String?
+  let msg: String?
 
-  public init(baseEP: String, campaignID: String, lang: String = "en") {
+  public init(baseEP: String, campaignID: String, lang: String = "en", accid: String? = nil, msg: String? = nil) {
     self.baseEP = baseEP
     self.campaignID = campaignID
     self.lang = lang
+    self.accid = accid
+    self.msg = msg
   }
 }

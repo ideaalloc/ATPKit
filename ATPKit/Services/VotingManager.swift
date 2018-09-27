@@ -105,7 +105,8 @@ public class VotingManager: ATPManager {
         let v = val(value: va, defaultValue: element as! String)
         opts.append(v)
       }
-      return VoteData(question: question, options: opts, message: message)
+      let msg = val(value: atpConfig?.msg, defaultValue: message)
+      return VoteData(question: question, options: opts, message: msg)
     }
     return nil
   }
